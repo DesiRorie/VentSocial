@@ -1,0 +1,189 @@
+#root {
+  box-sizing: border-box;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+body {
+  margin: 0;
+  background-color: black;
+  padding: 0rem;
+  color: var(--homeColor);
+  font-family: "Roboto", sans-serif;
+  --homeColor: #ffffff;
+}
+
+.bottomNav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+}
+.bottomNavUl {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+}
+.bottomNavUl li {
+  margin: 10px;
+}
+
+.homepage {
+  /* margin-top: 100px; */
+}
+.feed {
+  background-color: blue;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  margin-top: 1em;
+  padding: 1em;
+  padding-bottom: 100vh;
+}
+.loginPageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  /* background-color: #333232; */
+  flex-direction: column;
+}
+.loginPageContent {
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+
+  padding: 1em;
+  min-width: 50%;
+  /* border: 2px solid rgb(180, 8, 180); */
+}
+.loginPageContent h1 {
+  text-align: center;
+}
+.loginPageContent form {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  gap: 10px;
+}
+
+.loginPageContent form button {
+  background-color: rgb(180, 8, 180);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 5px;
+
+  min-width: 15%;
+}
+.loginPageContent form input {
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+
+  min-width: 20%;
+}
+.profilePageContainer {
+  padding: 1em;
+}
+.profileNav {
+  display: flex;
+  justify-content: space-between;
+}
+.profileNavUl {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+}
+/* .profileNavUl li {
+} */
+.profile-picture {
+  min-width: 75px;
+  min-height: 75px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+}
+
+.profileStats {
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+}
+.profileStats ul {
+  display: flex;
+  list-style: none;
+  margin-left: 10px;
+}
+.profileStats ul li {
+  margin-right: 5px;
+}
+
+.profileStatsInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px;
+}
+.recommended {
+  display: flex;
+  position: sticky;
+  top: 0;
+
+  padding: 10px 0px 10px 0px;
+
+  justify-content: space-around;
+  background-color: black;
+
+  margin-top: 10px;
+}
+.recommended button {
+  background-color: #333232;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 5px 10px;
+}
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+}
+.searchContainer input {
+  background-color: #333232;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  padding: 5px;
+  margin: auto;
+  width: 95%;
+}
+
+.topNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: black; */
+
+  /* position: fixed; */
+  /* top: 0; */
+  width: 100%;
+}
+.topNavUl {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+  margin-right: 0.5em;
+}
+.topNavUl li {
+  margin: 10px;
+}
+.topNav h1 {
+  margin-left: 0.5em;
+}
