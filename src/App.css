@@ -13,7 +13,41 @@ body {
   font-family: "Roboto", sans-serif;
   --homeColor: #ffffff;
 }
+button {
+  border: none;
+  padding: 0.5em;
+  cursor: pointer;
 
+  background-color: #333232;
+  color: #ffffff;
+}
+.addPostForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: auto;
+  flex-direction: column;
+  width: 50%;
+}
+.addPostForm button {
+  border: none;
+  padding: 0.5em;
+  min-width: 50%;
+
+  background-color: #333232;
+  color: #ffffff;
+}
+.addPostForm textarea {
+  border: none;
+  border-radius: 5px;
+  font-family: sans-serif;
+
+  min-width: 100%;
+  background-color: #333232;
+  color: #ffffff;
+  max-width: 100%;
+}
 .bottomNav {
   position: fixed;
   bottom: 0;
@@ -87,6 +121,32 @@ body {
 
   min-width: 20%;
 }
+
+.postsP {
+  display: flex;
+  flex-direction: column;
+  background-color: #333232;
+  align-items: center;
+  border-radius: 5px;
+
+  max-width: 50%;
+  overflow: scroll;
+  padding: 1em;
+  gap: 5px;
+  margin: auto;
+}
+.postsContainer {
+  display: grid;
+  margin: 1em;
+
+  align-items: center;
+  text-align: center;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  /* border: 1px solid red; */
+  margin-bottom: 100px;
+}
+
 .profilePageContainer {
   padding: 1em;
 }
@@ -187,4 +247,13 @@ body {
 }
 .topNav h1 {
   margin-left: 0.5em;
+}
+
+@media (max-width: 420px) {
+  .postsP {
+    /* display: block; */
+    min-width: 90%;
+
+    /* color: red; */
+  }
 }
