@@ -281,7 +281,7 @@ button {
   margin-left: 0.5em;
 }
 
-@media (max-width: 420px) {
+@media (max-width: 430px) {
   .postsP {
     font-size: small;
     /* display: block; */
