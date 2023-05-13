@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
 import Feed from "./Feed";
 
-const Explorepage = ({ posts, setPosts }) => {
+const Explorepage = () => {
+  const [memeImages, setMemeImages] = useState([]);
+  useEffect(() => {
+    fetch("https://api.imgflip.com/get_memes")
+      .then((res) => res.json())
+      .then((data) => setMemeImages(data.data.memes));
+  }, []);
   return (
     <div className="explorePage">
       <div className="searchContainer">
@@ -13,6 +20,15 @@ const Explorepage = ({ posts, setPosts }) => {
           <button>DIY</button>
         </div>
       </div>
+      {memeImages.map((image, id) => {
+        return (
+          <div className="feedImages">
+            <div key={id}>
+              <img src={image.url} alt={image.name} />
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };
