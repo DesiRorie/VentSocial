@@ -2,12 +2,12 @@ import React from "react";
 import TopNav from "../components/TopNav";
 import Feed from "./Feed";
 
-const Homepage = () => {
+const Homepage = ({ posts, setPosts }) => {
   return (
     <>
       <TopNav />
       <div className="homepage">
-        <Feed />
+        <Feed posts={posts} setPosts={setPosts} />
       </div>
     </>
   );

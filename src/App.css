@@ -27,6 +27,7 @@ button {
   align-items: center;
   gap: 10px;
   margin: auto;
+  margin-top: 10px;
   flex-direction: column;
   width: 50%;
 }
@@ -63,12 +64,34 @@ button {
 .bottomNavUl li {
   margin: 10px;
 }
-
-.feed {
-  background-color: blue;
-  display: flex;
-  height: 100vh;
+.explorePosts {
+  /* display: flex;
   justify-content: center;
+  flex-direction: column;
+
+  
+  background-color: #333232; */
+  display: flex;
+  flex-direction: column;
+  background-color: #333232;
+  align-items: center;
+  border-radius: 5px;
+  margin: 1em;
+  /* min-width: 60%; */
+
+  /* max-width: 50%; */
+  /* overflow: scroll; */
+
+  padding: 1em;
+  gap: 5px;
+}
+.feed {
+  /* background-color: blue; */
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  /* justify-content: center; */
+  align-items: center;
   margin-top: 1em;
   padding: 1em;
   padding-bottom: 100vh;
@@ -120,27 +143,26 @@ button {
 }
 
 .postsP {
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   background-color: #333232;
   align-items: center;
   border-radius: 5px;
-
-  max-width: 50%;
-  /* overflow: scroll; */
   padding: 1em;
   gap: 5px;
   margin: auto;
+  word-wrap: break-word;
+  max-width: 50%;
+  overflow: hidden;
 }
 .postsContainer {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   margin: 1em;
-
   align-items: center;
-  text-align: center;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-content: center;
   gap: 10px;
-  /* border: 1px solid red; */
+
   margin-bottom: 100px;
 }
 
@@ -248,6 +270,7 @@ button {
 
 @media (max-width: 420px) {
   .postsP {
+    font-size: small;
     /* display: block; */
     min-width: 90%;
 

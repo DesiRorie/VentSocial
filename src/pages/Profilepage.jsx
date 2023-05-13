@@ -2,8 +2,8 @@ import React, { useContext, useState, useEffect } from "react";
 import UserContext from "../context/UserContext";
 import profileImg from "../assets/profile.jpeg";
 
-const Profilepage = () => {
-  const [posts, setPosts] = useState([]);
+const Profilepage = ({ posts, setPosts }) => {
+  // const [posts, setPosts] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
   const [showAddPostForm, setShowAddPostForm] = useState(false);
   const [postText, setPostText] = useState("");
@@ -74,7 +74,6 @@ const Profilepage = () => {
           <h1>{userName}</h1>
           <ul className="profileNavUl">
             <li>Add Story</li>
-            <li>Add Post</li>
 
             <li>Info</li>
           </ul>
@@ -103,29 +102,31 @@ const Profilepage = () => {
               </div>
             </li>
           </ul>
+        </div>{" "}
+        <button
+          style={{ marginLeft: "16px", borderRadius: "5px" }}
+          onClick={toggleAddPostForm}
+        >
+          Add Post
+        </button>
+        {showAddPostForm && (
+          <div className="addPostForm">
+            <textarea value={postText} onChange={handleTextChange} />
+            <button onClick={() => addPost(postText)}>Submit</button>
+          </div>
+        )}
+        <div className="postsContainer">
+          {posts.map((post, id) => {
+            return (
+              <div className="postsP" key={id}>
+                <div className="postPinfo">
+                  <span>{post.text}</span>
+                  <span>{post.timeElapsed}</span>
+                </div>
+              </div>
+            );
+          })}
         </div>
-      </div>
-      <button
-        style={{ marginLeft: "16px", borderRadius: "5px" }}
-        onClick={toggleAddPostForm}
-      >
-        Add Post
-      </button>
-      {showAddPostForm && (
-        <div className="addPostForm">
-          <textarea value={postText} onChange={handleTextChange} />
-          <button onClick={() => addPost(postText)}>Submit</button>
-        </div>
-      )}
-      <div className="postsContainer">
-        {posts.map((post, id) => {
-          return (
-            <div className="postsP" key={id}>
-              <span>{post.text}</span>
-              <span>{post.timeElapsed}</span>
-            </div>
-          );
-        })}
       </div>
     </>
   );

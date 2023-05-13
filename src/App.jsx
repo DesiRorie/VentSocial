@@ -12,6 +12,7 @@ import UserContext from "./context/UserContext";
 function App() {
   const [userName, setUserName] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [posts, setPosts] = useState([]);
   const handleLogin = (login, success) => {
     console.log("Login:", login);
     console.log("Success:", success);
@@ -29,8 +30,14 @@ function App() {
         {isLoggedIn && (
           <>
             <Routes>
-              <Route path="/" element={<Homepage />} />
-              <Route path="/profile" element={<Profilepage />} />
+              <Route
+                path="/"
+                element={<Homepage posts={posts} setPosts={setPosts} />}
+              />
+              <Route
+                path="/profile"
+                element={<Profilepage posts={posts} setPosts={setPosts} />}
+              />
               <Route path="/explore" element={<Explorepage />} />
             </Routes>
             <BottomNav />
