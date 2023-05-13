@@ -64,9 +64,6 @@ button {
   margin: 10px;
 }
 
-.homepage {
-  /* margin-top: 100px; */
-}
 .feed {
   background-color: blue;
   display: flex;
@@ -130,7 +127,7 @@ button {
   border-radius: 5px;
 
   max-width: 50%;
-  overflow: scroll;
+  /* overflow: scroll; */
   padding: 1em;
   gap: 5px;
   margin: auto;

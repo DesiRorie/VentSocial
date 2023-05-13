@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import UserContext from "../context/UserContext";
 import profileImg from "../assets/profile.jpeg";
+
 const Profilepage = () => {
   const [posts, setPosts] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -102,7 +103,7 @@ const Profilepage = () => {
               </div>
             </li>
           </ul>
-        </div>{" "}
+        </div>
       </div>
       <button
         style={{ marginLeft: "16px", borderRadius: "5px" }}
