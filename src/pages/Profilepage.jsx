@@ -74,7 +74,6 @@ const Profilepage = ({ posts, setPosts }) => {
           <h1>{userName}</h1>
           <ul className="profileNavUl">
             <li>Add Story</li>
-
             <li>Info</li>
           </ul>
         </div>
@@ -120,7 +119,7 @@ const Profilepage = ({ posts, setPosts }) => {
             return (
               <div className="postsP" key={id}>
                 <div className="postPinfo">
-                  <span>{post.text}</span>
+                  <span style={{ display: "block" }}>{post.text}</span>
                   <span>{post.timeElapsed}</span>
                 </div>
               </div>

@@ -141,7 +141,9 @@ button {
 
   min-width: 20%;
 }
-
+.postPinfo {
+  text-align: center;
+}
 .postsP {
   /* display: flex; */
   flex-direction: column;
