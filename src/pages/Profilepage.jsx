@@ -4,7 +4,7 @@ import profileImg from "../assets/profile.jpeg";
 import MenuIcon from "@mui/icons-material/Menu";
 import AddIcon from "@mui/icons-material/Add";
 
-const Profilepage = ({ posts, setPosts }) => {
+const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
   // const [posts, setPosts] = useState([]);
 
   const cursorStyle = () => {
@@ -37,6 +37,7 @@ const Profilepage = ({ posts, setPosts }) => {
     setShowAddPostForm(false);
     setSelectedImage(null);
     setPostText("");
+    setLikes((prevLikes) => prevLikes + 1);
   };
   const toggleAddPostForm = () => {
     setShowAddPostForm((prevValue) => !prevValue);
@@ -96,7 +97,7 @@ const Profilepage = ({ posts, setPosts }) => {
           <ul style={{ padding: "0" }}>
             <li>
               <div className="profileStatsInfo">
-                <span>0</span>
+                <span>{likes}</span>
                 <span>Posts</span>
               </div>
             </li>

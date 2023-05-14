@@ -13,6 +13,7 @@ function App() {
   const [userName, setUserName] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [posts, setPosts] = useState([]);
+  const [likes, setLikes] = useState(0);
   const handleLogin = (login, success) => {
     console.log("Login:", login);
     console.log("Success:", success);
@@ -36,7 +37,14 @@ function App() {
               />
               <Route
                 path="/profile"
-                element={<Profilepage posts={posts} setPosts={setPosts} />}
+                element={
+                  <Profilepage
+                    likes={likes}
+                    setLikes={setLikes}
+                    posts={posts}
+                    setPosts={setPosts}
+                  />
+                }
               />
               <Route path="/explore" element={<Explorepage />} />
             </Routes>
