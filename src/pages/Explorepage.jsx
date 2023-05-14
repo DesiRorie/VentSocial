@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import Feed from "./Feed";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
 const Explorepage = () => {
+  const handleScroll = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   const [memeImages, setMemeImages] = useState([]);
   useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
@@ -22,13 +29,19 @@ const Explorepage = () => {
       </div>
       {memeImages.map((image, id) => {
         return (
-          <div className="feedImages">
-            <div key={id}>
+          <div key={id} className="feedImages">
+            <div>
               <img src={image.url} alt={image.name} />
             </div>
           </div>
         );
       })}
+      <div style={{ marginBottom: "5em", textAlign: "center" }}>
+        <h2>No more posts</h2>
+        <button className="scrollButton" onClick={handleScroll}>
+          <ArrowUpwardIcon />
+        </button>
+      </div>
     </div>
   );
 };

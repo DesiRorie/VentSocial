@@ -77,7 +77,7 @@ button {
   align-items: center;
   border-radius: 5px;
   margin: 1em;
-  /* min-width: 60%; */
+  min-width: 30vw;
 
   /* max-width: 50%; */
   /* overflow: scroll; */
@@ -156,14 +156,15 @@ button {
   text-align: center;
 }
 .postsP {
-  /* display: flex; */
+  display: flex;
+  justify-content: space-evenly;
   flex-direction: column;
   background-color: #333232;
   align-items: center;
   border-radius: 5px;
   padding: 1em;
   gap: 5px;
-  margin: auto;
+  /* margin: auto; */
   word-wrap: break-word;
   max-width: 50%;
   overflow: hidden;
@@ -172,8 +173,9 @@ button {
   display: flex;
   flex-wrap: wrap;
   margin: 1em;
-  align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  justify-self: center;
+
   gap: 10px;
 
   margin-bottom: 100px;
@@ -256,7 +258,10 @@ button {
   margin: auto;
   width: 95%;
 }
-
+.scrollButton {
+  border-radius: 5px;
+  padding: 1em;
+}
 .topNav {
   display: flex;
   align-items: center;

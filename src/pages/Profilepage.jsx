@@ -1,9 +1,18 @@
 import React, { useContext, useState, useEffect } from "react";
 import UserContext from "../context/UserContext";
 import profileImg from "../assets/profile.jpeg";
+import MenuIcon from "@mui/icons-material/Menu";
+import AddIcon from "@mui/icons-material/Add";
 
 const Profilepage = ({ posts, setPosts }) => {
   // const [posts, setPosts] = useState([]);
+
+  const cursorStyle = () => {
+    return {
+      cursor: "pointer",
+    };
+  };
+
   const [selectedImage, setSelectedImage] = useState(null);
   const [showAddPostForm, setShowAddPostForm] = useState(false);
   const [postText, setPostText] = useState("");
@@ -73,8 +82,12 @@ const Profilepage = ({ posts, setPosts }) => {
         <div className="profileNav">
           <h1>{userName}</h1>
           <ul className="profileNavUl">
-            <li>Add Story</li>
-            <li>Info</li>
+            <li>
+              <AddIcon style={cursorStyle()} />
+            </li>
+            <li>
+              <MenuIcon style={cursorStyle()} />
+            </li>
           </ul>
         </div>
         <div className="profileStats">
@@ -114,18 +127,18 @@ const Profilepage = ({ posts, setPosts }) => {
             <button onClick={() => addPost(postText)}>Submit</button>
           </div>
         )}
-        <div className="postsContainer">
-          {posts.map((post, id) => {
-            return (
-              <div className="postsP" key={id}>
-                <div className="postPinfo">
-                  <span style={{ display: "block" }}>{post.text}</span>
-                  <span>{post.timeElapsed}</span>
-                </div>
+      </div>{" "}
+      <div className="postsContainer">
+        {posts.map((post, id) => {
+          return (
+            <div className="postsP" key={id}>
+              <div className="postPinfo">
+                <span style={{ display: "block" }}>{post.text}</span>
+                <span>{post.timeElapsed}</span>
               </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
       </div>
     </>
   );
