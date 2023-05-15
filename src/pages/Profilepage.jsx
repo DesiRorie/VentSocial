@@ -3,9 +3,20 @@ import UserContext from "../context/UserContext";
 import profileImg from "../assets/profile.jpeg";
 import MenuIcon from "@mui/icons-material/Menu";
 import AddIcon from "@mui/icons-material/Add";
+import Axios from "axios";
 
 const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
-  // const [posts, setPosts] = useState([]);
+  const [savedPosts, setSavedPosts] = useState([]);
+  useEffect(() => {
+    Axios.get("http://localhost:8000/posts").then((res) => {
+      setSavedPosts(res.data);
+    });
+  }, []);
+
+  const [dbPosts, setDbPosts] = useState([]);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [showAddPostForm, setShowAddPostForm] = useState(false);
+  const [postText, setPostText] = useState("");
 
   const cursorStyle = () => {
     return {
@@ -13,9 +24,22 @@ const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
     };
   };
 
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [showAddPostForm, setShowAddPostForm] = useState(false);
-  const [postText, setPostText] = useState("");
+  const updatePosts = () => {
+    const timestamp = new Date().getTime();
+    const newPost = {
+      text: postText,
+      timestamp: timestamp,
+      elapsedTime: getTimeElapsed(timestamp),
+    };
+
+    Axios.post("http://localhost:8000/createPost", newPost)
+      .then(() => {
+        setDbPosts([...dbPosts, newPost]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const backgroundImageStyle = {
     backgroundImage: `url(${profileImg})`,
@@ -33,11 +57,12 @@ const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
       timeElapsed: getTimeElapsed(new Date().getTime()),
     };
 
-    setPosts((prevPosts) => [...prevPosts, newPost]);
+    // setPosts((prevPosts) => [...prevPosts, newPost]);
     setShowAddPostForm(false);
     setSelectedImage(null);
     setPostText("");
     setLikes((prevLikes) => prevLikes + 1);
+    updatePosts();
   };
   const toggleAddPostForm = () => {
     setShowAddPostForm((prevValue) => !prevValue);
@@ -140,6 +165,18 @@ const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
             </div>
           );
         })}
+        <div className="postsContainer">
+          {savedPosts.map((val, key) => {
+            return (
+              <div className="postsP" key={key}>
+                <div className="postPinfo">
+                  <span style={{ display: "block" }}>{val.text}</span>
+                  <span>{val.elapsedTime}</span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </>
   );
