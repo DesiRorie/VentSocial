@@ -3,10 +3,12 @@ import TopNav from "../components/TopNav";
 import Feed from "./Feed";
 import { useState, useEffect } from "react";
 import Axios from "axios";
+import { useContext } from "react";
+import UserContext from "../context/UserContext";
 
 const Homepage = ({ posts, setPosts }) => {
   const [savedPosts, setSavedPosts] = useState([]);
-
+  const userName = useContext(UserContext);
   useEffect(() => {
     Axios.get("http://localhost:8000/posts").then((res) => {
       setSavedPosts(res.data);
@@ -24,6 +26,7 @@ const Homepage = ({ posts, setPosts }) => {
                 <div className="postPinfo">
                   <span style={{ display: "block" }}>{val.text}</span>
                   <span>{val.elapsedTime}</span>
+                  <span> - {userName}</span>
                 </div>
               </div>
             );
