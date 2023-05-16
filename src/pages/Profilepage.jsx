@@ -8,9 +8,11 @@ import Axios from "axios";
 const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
   const [savedPosts, setSavedPosts] = useState([]);
   useEffect(() => {
-    Axios.get(`${process.env.REACT_APP_BACKEND_URL}/posts`).then((res) => {
-      setSavedPosts(res.data);
-    });
+    Axios.get(`https://ventsocialback-production.up.railway.app/posts`).then(
+      (res) => {
+        setSavedPosts(res.data);
+      }
+    );
   }, []);
 
   const [dbPosts, setDbPosts] = useState([]);
@@ -32,7 +34,10 @@ const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
       elapsedTime: getTimeElapsed(timestamp),
     };
 
-    Axios.post(`${process.env.REACT_APP_BACKEND_URL}/createPost`, newPost)
+    Axios.post(
+      `https://ventsocialback-production.up.railway.app/createPost`,
+      newPost
+    )
       .then(() => {
         setDbPosts([...dbPosts, newPost]);
       })
