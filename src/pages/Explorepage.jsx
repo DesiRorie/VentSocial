@@ -14,7 +14,10 @@ const Explorepage = () => {
   useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
       .then((res) => res.json())
-      .then((data) => setMemeImages(data.data.memes));
+      .then((data) => {
+        console.log(data);
+        return setMemeImages(data.data.memes);
+      });
   }, []);
   return (
     <div className="explorePage">
