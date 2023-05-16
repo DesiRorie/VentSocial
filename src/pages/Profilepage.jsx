@@ -8,7 +8,7 @@ import Axios from "axios";
 const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
   const [savedPosts, setSavedPosts] = useState([]);
   useEffect(() => {
-    Axios.get(`${process.env.REACT_APP_BACKEND_URL}`).then((res) => {
+    Axios.get(`${process.env.REACT_APP_BACKEND_URL}/posts`).then((res) => {
       setSavedPosts(res.data);
     });
   }, []);
