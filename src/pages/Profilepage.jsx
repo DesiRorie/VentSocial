@@ -11,6 +11,7 @@ const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
     Axios.get(`https://ventsocialback-production.up.railway.app/posts`).then(
       (res) => {
         setSavedPosts(res.data);
+        setLikes(res.data.length);
       }
     );
   }, []);
@@ -66,7 +67,7 @@ const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
     setShowAddPostForm(false);
     setSelectedImage(null);
     setPostText("");
-    setLikes((prevLikes) => prevLikes + 1);
+    // setLikes((prevLikes) => prevLikes + 1);
     updatePosts();
   };
   const toggleAddPostForm = () => {
