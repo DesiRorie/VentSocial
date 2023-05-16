@@ -66,22 +66,19 @@ const Explorepage = () => {
       behavior: "smooth",
     });
   };
-  const [query, setQuery] = useState("");
-  const [memeImages, setMemeImages] = useState([]);
+
   const [filteredMemeImages, setFilteredMemeImages] = useState([]);
 
   useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
       .then((res) => res.json())
       .then((data) => {
-        setMemeImages(data.data.memes);
         setFilteredMemeImages(data.data.memes);
       });
   }, []);
 
   const handleQuery = (e) => {
     const value = e.target.value;
-    setQuery(value);
 
     const filteredImages = memeImages.filter((image) => {
       return image.name.toLowerCase().includes(value.toLowerCase());
