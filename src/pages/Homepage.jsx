@@ -12,6 +12,7 @@ const Homepage = ({ posts, setPosts }) => {
   useEffect(() => {
     Axios.get(`https://ventsocialback-production.up.railway.app/posts`).then(
       (res) => {
+        console.log(res.data);
         setSavedPosts(res.data);
       }
     );
