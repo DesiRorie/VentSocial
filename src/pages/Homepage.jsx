@@ -10,7 +10,7 @@ const Homepage = ({ posts, setPosts }) => {
   const [savedPosts, setSavedPosts] = useState([]);
   const userName = useContext(UserContext);
   useEffect(() => {
-    Axios.get("http://localhost:8000/posts").then((res) => {
+    Axios.get("https://ventsocialback.onrender.com/posts").then((res) => {
       setSavedPosts(res.data);
     });
   }, []);

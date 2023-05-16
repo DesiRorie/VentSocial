@@ -32,7 +32,7 @@ const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
       elapsedTime: getTimeElapsed(timestamp),
     };
 
-    Axios.post("http://localhost:8000/createPost", newPost)
+    Axios.post("https://ventsocialback.onrender.com/createPost", newPost)
       .then(() => {
         setDbPosts([...dbPosts, newPost]);
       })
