@@ -10,11 +10,9 @@ const Homepage = ({ posts, setPosts }) => {
   const [savedPosts, setSavedPosts] = useState([]);
   const userName = useContext(UserContext);
   useEffect(() => {
-    Axios.get(`https://ventsocialback-production.up.railway.app/posts`).then(
-      (res) => {
-        setSavedPosts(res.data);
-      }
-    );
+    Axios.get(`${process.env.REACT_APP_BACKEND_URL}/posts`).then((res) => {
+      setSavedPosts(res.data);
+    });
   }, []);
 
   return (
