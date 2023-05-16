@@ -8,7 +8,7 @@ import Axios from "axios";
 const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
   const [savedPosts, setSavedPosts] = useState([]);
   useEffect(() => {
-    Axios.get("http://localhost:8000/posts").then((res) => {
+    Axios.get("https://ventsocialback.onrender.com/posts").then((res) => {
       setSavedPosts(res.data);
     });
   }, []);
