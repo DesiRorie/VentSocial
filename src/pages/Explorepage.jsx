@@ -67,12 +67,14 @@ const Explorepage = () => {
     });
   };
 
+  const [memeImages, setMemeImages] = useState([]);
   const [filteredMemeImages, setFilteredMemeImages] = useState([]);
 
   useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
       .then((res) => res.json())
       .then((data) => {
+        setMemeImages(data.data.memes);
         setFilteredMemeImages(data.data.memes);
       });
   }, []);
