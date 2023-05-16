@@ -8,14 +8,13 @@ import Explorepage from "./pages/Explorepage";
 import Loginpage from "./pages/Loginpage";
 import { useState } from "react";
 import UserContext from "./context/UserContext";
-import { useEffect } from "react";
 
 function App() {
   const [userName, setUserName] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [posts, setPosts] = useState([]);
   const [likes, setLikes] = useState(0);
-  const navigate = useNavigate();
+
   const handleLogin = (login, success) => {
     console.log("Login:", login);
     console.log("Success:", success);
@@ -23,18 +22,8 @@ function App() {
     if (success) {
       setIsLoggedIn(true);
       setUserName(login);
-      sessionStorage.setItem("isLoggedIn", "true");
     }
   };
-  useEffect(() => {
-    if (isLoggedIn) {
-      const storedLoggedInStatus = sessionStorage.getItem("isLoggedIn");
-      if (!storedLoggedInStatus || storedLoggedInStatus !== "true") {
-        setIsLoggedIn(false);
-        navigate("/");
-      }
-    }
-  }, [isLoggedIn, navigate]);
 
   return (
     <>
