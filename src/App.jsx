@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 import BottomNav from "./components/BottomNav";
 
@@ -14,6 +14,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [posts, setPosts] = useState([]);
   const [likes, setLikes] = useState(0);
+  const navigate = useNavigate();
   const handleLogin = (login, success) => {
     console.log("Login:", login);
     console.log("Success:", success);
@@ -21,8 +22,18 @@ function App() {
     if (success) {
       setIsLoggedIn(true);
       setUserName(login);
+      sessionStorage.setItem("isLoggedIn", "true");
     }
   };
+  useEffect(() => {
+    if (isLoggedIn) {
+      const storedLoggedInStatus = sessionStorage.getItem("isLoggedIn");
+      if (!storedLoggedInStatus || storedLoggedInStatus !== "true") {
+        setIsLoggedIn(false);
+        navigate("/");
+      }
+    }
+  }, [isLoggedIn, navigate]);
 
   return (
     <>
