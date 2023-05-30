@@ -20,6 +20,7 @@ const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [showAddPostForm, setShowAddPostForm] = useState(false);
   const [postText, setPostText] = useState("");
+  const [checkstories, setCheckStories] = useState(false);
 
   const cursorStyle = () => {
     return {
@@ -49,6 +50,7 @@ const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
 
   const backgroundImageStyle = {
     backgroundImage: `url(${profileImg})`,
+    border: checkstories ? "2px solid green" : null,
   };
 
   const handleTextChange = (event) => {
@@ -73,6 +75,7 @@ const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
   const toggleAddPostForm = () => {
     setShowAddPostForm((prevValue) => !prevValue);
   };
+  const handleAddStory = () => {};
   const getTimeElapsed = (timestamp) => {
     const currentTime = new Date().getTime();
     const timeDifference = currentTime - timestamp;
@@ -89,6 +92,13 @@ const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
       return `${minutesElapsed} minutes ago`;
     }
   };
+  useEffect(() => {
+    if (checkstories > 0) {
+      setCheckStories(true);
+    }
+    return;
+  }, []);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setPosts((prevPosts) =>
@@ -115,7 +125,7 @@ const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
           <h1>{userName}</h1>
           <ul className="profileNavUl">
             <li>
-              <AddIcon style={cursorStyle()} />
+              <AddIcon onClick={handleAddStory} style={cursorStyle()} />
             </li>
             <li>
               <MenuIcon style={cursorStyle()} />
