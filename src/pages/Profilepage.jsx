@@ -8,10 +8,17 @@ import Axios from "axios";
 const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
   const [savedPosts, setSavedPosts] = useState([]);
   useEffect(() => {
-    Axios.get(`https://ventsocialserver.onrender.com/posts`).then((res) => {
-      setSavedPosts(res.data);
-      setLikes(res.data.length);
-    });
+    Axios.get(`https://ventsocialserver.onrender.com/posts`)
+      .then((res) => {
+        setSavedPosts(res.data);
+        setLikes(res.data.length);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
 
   const [dbPosts, setDbPosts] = useState([]);
@@ -39,9 +46,7 @@ const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
       .then(() => {
         setDbPosts([...dbPosts, newPost]);
       })
-      .then(() => {
-        setIsLoading(false);
-      })
+
       .catch((error) => {
         console.log(error);
       });
@@ -180,7 +185,7 @@ const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
             </div>
           );
         })}
-        {isLoading ? <span>Loading posts...</span> : null}
+        {isLoading ? <span>Loading posts...</span> : ""}
         <div className="postsContainer">
           {savedPosts.map((val, key) => {
             return (
