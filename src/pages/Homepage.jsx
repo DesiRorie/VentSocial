@@ -7,15 +7,23 @@ import { useContext } from "react";
 import UserContext from "../context/UserContext";
 
 const Homepage = ({ posts, setPosts }) => {
+  const [isLoading, setIsLoading] = useState(true);
   const [savedPosts, setSavedPosts] = useState([]);
   const userName = useContext(UserContext);
-  useEffect(() => {
-    Axios.get(`https://ventsocialserver.onrender.com/posts`).then((res) => {
-      console.log(res.data);
-      setSavedPosts(res.data);
-    });
-  }, []);
 
+  useEffect(() => {
+    Axios.get(`https://ventsocialserver.onrender.com/posts`)
+      .then((res) => {
+        setSavedPosts(res.data);
+        setLikes(res.data.length);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, []);
   return (
     <>
       <TopNav />
