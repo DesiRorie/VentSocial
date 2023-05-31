@@ -19,6 +19,7 @@ const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
   const [showAddPostForm, setShowAddPostForm] = useState(false);
   const [postText, setPostText] = useState("");
   const [checkstories, setCheckStories] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const cursorStyle = () => {
     return {
@@ -37,6 +38,9 @@ const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
     Axios.post(`https://ventsocialserver.onrender.com/createPost`, newPost)
       .then(() => {
         setDbPosts([...dbPosts, newPost]);
+      })
+      .then(() => {
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
@@ -176,6 +180,7 @@ const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
             </div>
           );
         })}
+        {isLoading ? <span>Loading posts...</span> : null}
         <div className="postsContainer">
           {savedPosts.map((val, key) => {
             return (
