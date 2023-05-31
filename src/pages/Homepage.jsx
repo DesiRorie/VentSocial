@@ -29,6 +29,7 @@ const Homepage = ({ posts, setPosts }) => {
       <TopNav />
       <div className="homepage">
         <div className="postsContainer">
+          {isLoading ? <span>Loading posts...</span> : ""}
           {savedPosts.map((val, key) => {
             return (
               <div className="postsP" key={key}>
