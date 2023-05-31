@@ -8,12 +8,10 @@ import Axios from "axios";
 const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
   const [savedPosts, setSavedPosts] = useState([]);
   useEffect(() => {
-    Axios.get(`https://ventsocialback-production.up.railway.app/posts`).then(
-      (res) => {
-        setSavedPosts(res.data);
-        setLikes(res.data.length);
-      }
-    );
+    Axios.get(`https://ventsocialserver.onrender.com/posts`).then((res) => {
+      setSavedPosts(res.data);
+      setLikes(res.data.length);
+    });
   }, []);
 
   const [dbPosts, setDbPosts] = useState([]);
@@ -36,10 +34,7 @@ const Profilepage = ({ posts, setPosts, likes, setLikes }) => {
       elapsedTime: getTimeElapsed(timestamp),
     };
 
-    Axios.post(
-      `https://ventsocialback-production.up.railway.app/createPost`,
-      newPost
-    )
+    Axios.post(`https://ventsocialserver.onrender.com/createPost`, newPost)
       .then(() => {
         setDbPosts([...dbPosts, newPost]);
       })

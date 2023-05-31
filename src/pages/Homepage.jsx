@@ -10,12 +10,10 @@ const Homepage = ({ posts, setPosts }) => {
   const [savedPosts, setSavedPosts] = useState([]);
   const userName = useContext(UserContext);
   useEffect(() => {
-    Axios.get(`https://ventsocialback-production.up.railway.app/posts`).then(
-      (res) => {
-        console.log(res.data);
-        setSavedPosts(res.data);
-      }
-    );
+    Axios.get(`https://ventsocialserver.onrender.com/posts`).then((res) => {
+      console.log(res.data);
+      setSavedPosts(res.data);
+    });
   }, []);
 
   return (
